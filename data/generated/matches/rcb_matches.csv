@@ -1,0 +1,15 @@
+match_id,ipl_match_no,rcb_match_no,match_date,venue_id,opponent_id,is_home,toss_winner,toss_decision,rcb_batting_first,status,rcb_runs,rcb_wickets,rcb_balls,opp_runs,opp_wickets,opp_balls,winner,result_margin,is_validation_case
+1,1,1,2026-03-28,1,3,True,KKR,BOWL,True,COMPLETED,206,6,120,211,5,108,KKR,5 wickets,False
+2,6,2,2026-04-01,3,2,False,CSK,BAT,False,COMPLETED,176,7,119,175,5,120,RCB,3 wickets,False
+3,11,3,2026-04-05,1,1,True,MI,BOWL,True,COMPLETED,181,9,120,184,4,109,MI,6 wickets,False
+4,16,4,2026-04-09,5,4,False,DC,BOWL,True,COMPLETED,184,4,120,184,5,120,RCB,Super Over,False
+5,21,5,2026-04-13,1,5,True,RCB,BOWL,False,COMPLETED,192,8,120,189,4,120,RCB,2 wickets,False
+6,26,6,2026-04-17,7,6,False,RCB,BOWL,False,COMPLETED,176,2,89,175,10,111,RCB,8 wickets,False
+7,31,7,2026-04-21,1,7,True,RR,BOWL,True,COMPLETED,179,6,120,180,2,102,RR,8 wickets,False
+8,37,8,2026-04-25,9,8,False,RCB,BOWL,False,COMPLETED,178,5,115,172,5,120,RCB,5 wickets,False
+9,42,9,2026-04-30,1,9,True,RCB,BOWL,False,COMPLETED,155,3,100,151,10,99,RCB,7 wickets,False
+10,47,10,2026-05-04,4,3,False,RCB,BAT,True,COMPLETED,197,3,120,196,10,120,RCB,1 run,False
+11,52,11,2026-05-08,1,2,True,CSK,BOWL,True,COMPLETED,227,2,120,141,10,83,RCB,86 runs,False
+12,57,12,2026-05-12,2,1,False,MI,BOWL,True,COMPLETED,167,5,120,168,7,93,MI,3 wickets,False
+13,62,13,2026-05-17,1,4,True,RCB,BAT,True,COMPLETED,147,10,104,148,1,94,DC,9 wickets,False
+14,67,14,2026-05-22,6,5,False,RCB,BAT,True,COMPLETED,179,5,120,185,5,117,SRH,5 wickets,True

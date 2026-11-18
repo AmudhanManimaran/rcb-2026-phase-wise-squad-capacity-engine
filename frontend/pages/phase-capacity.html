@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase Capacity | EeSaala Tracker</title>
+<meta name="description" content="EeSaala Tracker: RCB squad-specific phase-wise target intelligence, IPL 2026.">
+<link rel="icon" href="../assets/logos/eesaala-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-page="phase-capacity">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <header class="topbar" id="topbar"></header>
+    <div class="content">
+      <div class="api-error" id="apiError"></div>
+
+      <section class="section grid g-4" id="capKpis"></section>
+      <section class="section grid g-3" id="phaseCards"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></section>
+      <section class="section grid g-main-side">
+        <div class="card accent">
+          <div class="card-head"><h3>Contribution by player</h3><span class="small">BallShare x SR x phase balls (pre-adjustment)</span></div>
+          <div class="chart-box lg"><canvas id="contribChart"></canvas></div>
+        </div>
+        <div class="stack">
+          <div class="card accent">
+            <div class="card-head"><h3>Venue profile</h3><span class="badge" id="venueBadge">-</span></div>
+            <div id="venueBody"></div>
+          </div>
+          <div class="card accent">
+            <div class="card-head"><h3>Opponent threat</h3><span class="badge" id="oppBadge">-</span></div>
+            <div id="oppBody"></div>
+          </div>
+        </div>
+      </section>
+      <section class="section card accent">
+        <div class="card-head"><h3>Playing XI phase profiles</h3><span class="small" id="profileNote"></span></div>
+        <div class="table-wrap"><table class="table" id="profileTable"></table></div>
+      </section>
+      <section class="section card">
+        <div class="card-head"><h3>Capacity pipeline formulas</h3></div>
+        <div class="grid g-2" id="formulaList"></div>
+      </section>
+    </div>
+  </main>
+</div>
+<div class="toasts" id="toasts"></div>
+<script src="../assets/vendor/chart.umd.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/charts.js"></script>
+<script src="../components/sidebar.js"></script>
+<script src="../components/navbar.js"></script>
+<script src="../components/player-card.js"></script>
+<script src="../components/phase-card.js"></script>
+<script src="../components/checkpoint-card.js"></script>
+<script src="../js/phase-capacity.js"></script>
+</body>
+</html>

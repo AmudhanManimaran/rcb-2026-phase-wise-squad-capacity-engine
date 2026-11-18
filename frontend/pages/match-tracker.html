@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Match Tracker | EeSaala Tracker</title>
+<meta name="description" content="EeSaala Tracker: RCB squad-specific phase-wise target intelligence, IPL 2026.">
+<link rel="icon" href="../assets/logos/eesaala-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-page="match-tracker">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <header class="topbar" id="topbar"></header>
+    <div class="content">
+      <div class="api-error" id="apiError"></div>
+
+      <section class="grid g-side-main section">
+        <div class="stack">
+          <div class="card accent">
+            <div class="card-head"><h3>Live innings input</h3><span class="badge" id="planBadge">Plan</span></div>
+            <div class="grid g-3" style="gap:10px">
+              <div class="field"><label for="inOvers">Overs</label><input class="input" id="inOvers" value="10.0" placeholder="12.3"></div>
+              <div class="field"><label for="inRuns">Runs</label><input class="input" id="inRuns" type="number" min="0" value="85"></div>
+              <div class="field"><label for="inWkts">Wickets</label><input class="input" id="inWkts" type="number" min="0" max="10" value="2"></div>
+            </div>
+            <div class="row" style="margin-top:14px">
+              <button class="btn primary" id="updateBtn">Update tracker</button>
+              <button class="btn ghost sm" id="resetBtn">Clear history</button>
+            </div>
+            <p class="small" style="margin-top:12px">Each update is stored in <code>rcb_live_tracker</code> with its deficit allocation in <code>rcb_deficit_recommendations</code>.</p>
+          </div>
+          <div class="card accent">
+            <div class="card-head"><h3>Update history</h3></div>
+            <div id="history"></div>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="card accent">
+            <div class="row between" style="align-items:flex-end">
+              <div class="scoreboard"><span class="sc-runs" id="scRuns">-</span><span class="sc-overs" id="scOvers"></span></div>
+              <div class="grid g-3" style="gap:10px;min-width:360px" id="scMeta"></div>
+            </div>
+            <div class="status-banner" id="statusBanner" style="margin-top:14px"><span class="sb-status">-</span><span class="sb-msg">Enter the current score to evaluate the innings against the plan.</span></div>
+          </div>
+          <div class="card accent">
+            <div class="card-head"><h3>Deficit carry-forward</h3><span class="small">Extra_q = Deficit &times; Eff(q) / &Sigma; Eff(remaining)</span></div>
+            <div class="table-wrap"><table class="table compact" id="recTable"></table></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section card accent">
+        <div class="row between">
+          <div><h3>Innings replay against the pre-match plan</h3>
+            <p class="small" style="margin:6px 0 0">Steps through RCB's actual innings over by over and re-runs the deficit solver at each over end.</p></div>
+          <div class="row"><button class="btn sm" id="playBtn">Play</button><span class="badge gold" id="replayOver">Over -</span></div>
+        </div>
+        <input type="range" id="replaySlider" min="1" max="20" value="1" style="margin:16px 0 6px">
+        <div class="over-strip" id="overStrip"></div>
+        <div class="grid g-main-side" style="margin-top:16px">
+          <div class="chart-box lg"><canvas id="replayChart"></canvas></div>
+          <div id="replayState"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+<div class="toasts" id="toasts"></div>
+<script src="../assets/vendor/chart.umd.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/charts.js"></script>
+<script src="../components/sidebar.js"></script>
+<script src="../components/navbar.js"></script>
+<script src="../components/player-card.js"></script>
+<script src="../components/phase-card.js"></script>
+<script src="../components/checkpoint-card.js"></script>
+<script src="../js/match-tracker.js"></script>
+</body>
+</html>

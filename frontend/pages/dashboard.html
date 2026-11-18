@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard | EeSaala Tracker</title>
+<meta name="description" content="EeSaala Tracker: RCB squad-specific phase-wise target intelligence, IPL 2026.">
+<link rel="icon" href="../assets/logos/eesaala-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-page="dashboard">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <header class="topbar" id="topbar"></header>
+    <div class="content">
+      <div class="api-error" id="apiError"></div>
+
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Royal Challengers Bengaluru · IPL 2026</div>
+            <h2>Phase-wise target <em>intelligence</em></h2>
+            <p>Recency-weighted player phase profiles, playing-XI scoring capacity, venue and opponent adjustment,
+               a dynamic-programming checkpoint solver and walk-forward backtesting across RCB's league season.</p>
+            <div class="row" style="margin-top:14px">
+              <a class="btn primary" href="target-planner.html">Open Target Planner</a>
+              <a class="btn ghost" href="backtesting.html" style="border-color:rgba(255,255,255,.3)">View Backtest</a>
+            </div>
+          </div>
+          <div class="hero-stats" id="heroStats"><div class="skeleton" style="grid-column:span 4"></div></div>
+        </div>
+      </section>
+
+      <section class="section grid g-6" id="kpis"></section>
+
+      <section class="section card accent">
+        <div class="card-head"><h3>Season results</h3><span class="small">W = RCB win · VAL = final validation case (IPL Match 67)</span></div>
+        <div class="results-strip" id="resultsStrip"></div>
+      </section>
+
+      <section class="section grid g-main-side">
+        <div class="card accent">
+          <div class="card-head"><h3>Projected vs actual at 20 overs</h3><span class="small">Walk-forward backtest, pre-match information only</span></div>
+          <div class="chart-box lg"><canvas id="predActualChart"></canvas></div>
+        </div>
+        <div class="card accent" id="validationCard">
+          <div class="card-head"><h3>Validation case</h3><span class="badge gold">IPL Match 67</span></div>
+          <div id="validationBody"><div class="skeleton"></div></div>
+        </div>
+      </section>
+
+      <section class="section grid g-3">
+        <div class="card accent">
+          <div class="card-head"><h3>Phase averages</h3><span class="small">Runs per phase</span></div>
+          <div class="chart-box"><canvas id="phaseAvgChart"></canvas></div>
+        </div>
+        <div class="card accent">
+          <div class="card-head"><h3>Checkpoint accuracy</h3><span class="small">MAE and hit rate</span></div>
+          <div class="chart-box"><canvas id="maeChart"></canvas></div>
+        </div>
+        <div class="card accent">
+          <div class="card-head"><h3>Leading run scorers</h3><span class="small">Season to date</span></div>
+          <div id="topBatters"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+<div class="toasts" id="toasts"></div>
+<script src="../assets/vendor/chart.umd.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/charts.js"></script>
+<script src="../components/sidebar.js"></script>
+<script src="../components/navbar.js"></script>
+<script src="../components/player-card.js"></script>
+<script src="../components/phase-card.js"></script>
+<script src="../components/checkpoint-card.js"></script>
+<script src="../js/dashboard.js"></script>
+</body>
+</html>

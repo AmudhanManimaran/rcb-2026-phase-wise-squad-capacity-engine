@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EeSaala Tracker | RCB Phase-Wise Target Intelligence</title>
+<link rel="icon" href="assets/logos/eesaala-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="landing">
+  <section class="landing-hero">
+    <div class="row" style="gap:14px;margin-bottom:34px">
+      <img src="assets/logos/eesaala-mark.svg" alt="" width="54" height="54">
+      <div><div class="brand-name" style="font-size:24px">EeSaala<span> Tracker</span></div>
+      <div class="brand-sub">RCB Squad-Specific Phase-Wise Target Intelligence</div></div>
+      <span class="spacer"></span>
+      <span class="status-pill" id="apiStatus"><span class="dot"></span>Checking engine</span>
+    </div>
+    <div class="eyebrow" style="font-size:12px;letter-spacing:.3em;color:var(--red-bright);font-weight:600;text-transform:uppercase">IPL 2026 · Royal Challengers Bengaluru</div>
+    <h1 style="margin-top:12px">Plan every phase.<br><span>Chase every target.</span></h1>
+    <p class="lead">An analytical system that turns ball-by-ball history into recency-weighted player phase profiles, derives the
+      scoring capacity of the selected XI, adjusts it for venue and opponent, solves powerplay, middle and death checkpoints with
+      dynamic programming, tracks live deficits, and validates every prediction chronologically.</p>
+    <div class="row" style="margin-top:26px">
+      <a class="btn primary" href="pages/dashboard.html" style="height:46px;padding:0 24px;font-size:14px">Enter dashboard</a>
+      <a class="btn ghost" id="docsLink" href="#" target="_blank" rel="noopener" style="height:46px">API documentation</a>
+    </div>
+  </section>
+  <section class="landing-modules">
+    <a class="module-tile" href="pages/dashboard.html"><span class="mt-no">01</span><h3>Dashboard</h3><p>Season record, backtest KPIs, projected vs actual and the Match 67 validation case.</p><span class="mt-big">01</span></a>
+    <a class="module-tile" href="pages/squad.html"><span class="mt-no">02</span><h3>Squad Intelligence</h3><p>Recency-weighted phase SR and OutProb for all 25 players, with cold-start flags.</p><span class="mt-big">02</span></a>
+    <a class="module-tile" href="pages/phase-capacity.html"><span class="mt-no">03</span><h3>Phase Capacity</h3><p>Ball shares, team SR, venue factors and opponent threat for the selected XI.</p><span class="mt-big">03</span></a>
+    <a class="module-tile" href="pages/target-planner.html"><span class="mt-no">04</span><h3>Target Planner</h3><p>Recommended target, venue-shaped phase targets and the DP checkpoint plan.</p><span class="mt-big">04</span></a>
+    <a class="module-tile" href="pages/match-tracker.html"><span class="mt-no">05</span><h3>Match Tracker</h3><p>Live deficit tracking with carry-forward allocation, plus over-by-over replay.</p><span class="mt-big">05</span></a>
+    <a class="module-tile" href="pages/backtesting.html"><span class="mt-no">06</span><h3>Backtesting</h3><p>Walk-forward evaluation, error metrics, failure modes and parameter calibration.</p><span class="mt-big">06</span></a>
+    <a class="module-tile" href="pages/analytics.html"><span class="mt-no">07</span><h3>Analytics</h3><p>Phase run rates, outcome distribution, venues, opponents and player contribution.</p><span class="mt-big">07</span></a>
+  </section>
+  <footer style="padding:0 8vw 40px;color:var(--faint);font-size:12px"></footer>
+</div>
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script>
+  document.getElementById("docsLink").href = (EESAALA.API_BASE || "") + "/docs";
+  API.health().then(h => {
+    document.getElementById("apiStatus").innerHTML = `<span class="dot ${h.status === "ok" ? "ok" : "bad"}"></span>${h.status === "ok" ? "Engine online · " + h.counts.deliveries + " deliveries" : "Database offline"}`;
+  }).catch(() => { document.getElementById("apiStatus").innerHTML = '<span class="dot bad"></span>API offline'; });
+</script>
+</body>
+</html>

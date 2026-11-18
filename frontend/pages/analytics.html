@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analytics | EeSaala Tracker</title>
+<meta name="description" content="EeSaala Tracker: RCB squad-specific phase-wise target intelligence, IPL 2026.">
+<link rel="icon" href="../assets/logos/eesaala-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-page="analytics">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <header class="topbar" id="topbar"></header>
+    <div class="content">
+      <div class="api-error" id="apiError"></div>
+
+      <section class="section grid g-2">
+        <div class="card accent">
+          <div class="card-head"><h3>RCB phase run rate by match</h3></div>
+          <div class="chart-box"><canvas id="rrTrend"></canvas></div>
+        </div>
+        <div class="card accent">
+          <div class="card-head"><h3>Ball outcome distribution</h3><span class="small">RCB batting, share of legal balls</span></div>
+          <div class="chart-box"><canvas id="distChart"></canvas></div>
+        </div>
+      </section>
+      <section class="section grid g-main-side">
+        <div class="card accent">
+          <div class="card-head"><h3>Venue phase scoring</h3><span class="small">Reference prior vs observed 2026 innings</span></div>
+          <div class="chart-box lg"><canvas id="venueChart"></canvas></div>
+        </div>
+        <div class="card accent">
+          <div class="card-head"><h3>Player run contribution</h3></div>
+          <div class="chart-box lg"><canvas id="contribChart"></canvas></div>
+        </div>
+      </section>
+      <section class="section grid g-2">
+        <div class="card accent">
+          <div class="card-head"><h3>Opponent bowling vs RCB</h3><span class="small">Economy by phase (darker red = tighter)</span></div>
+          <div class="table-wrap"><table class="table compact" id="oppTable"></table></div>
+        </div>
+        <div class="card accent">
+          <div class="card-head"><h3>Venue reference table</h3></div>
+          <div class="table-wrap"><table class="table compact" id="venueTable"></table></div>
+        </div>
+      </section>
+      <section class="section card accent">
+        <div class="card-head"><h3>RCB bowling by phase</h3></div>
+        <div class="table-wrap"><table class="table" id="bowlTable"></table></div>
+      </section>
+    </div>
+  </main>
+</div>
+<div class="toasts" id="toasts"></div>
+<script src="../assets/vendor/chart.umd.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/charts.js"></script>
+<script src="../components/sidebar.js"></script>
+<script src="../components/navbar.js"></script>
+<script src="../components/player-card.js"></script>
+<script src="../components/phase-card.js"></script>
+<script src="../components/checkpoint-card.js"></script>
+<script src="../js/analytics.js"></script>
+</body>
+</html>

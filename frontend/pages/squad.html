@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Squad Intelligence | EeSaala Tracker</title>
+<meta name="description" content="EeSaala Tracker: RCB squad-specific phase-wise target intelligence, IPL 2026.">
+<link rel="icon" href="../assets/logos/eesaala-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-page="squad">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <header class="topbar" id="topbar"></header>
+    <div class="content">
+      <div class="api-error" id="apiError"></div>
+
+      <section class="section card accent">
+        <div class="row between">
+          <div>
+            <h3>RCB 2026 squad · phase profiles</h3>
+            <p class="small" style="margin:6px 0 0">Phase strike rates are recency-weighted (formula 02) and shrunk toward the synthetic prior (formula 05),
+              computed with information available before the selected match.</p>
+          </div>
+          <div class="row">
+            <input class="input" id="search" placeholder="Search player" style="width:200px">
+            <div class="seg" id="roleSeg">
+              <button class="on" data-role="ALL">All</button><button data-role="BAT">Bat</button><button data-role="WK">WK</button>
+              <button data-role="AR">AR</button><button data-role="BOWL">Bowl</button>
+            </div>
+            <div class="seg" id="xiSeg"><button class="on" data-xi="all">Squad</button><button data-xi="xi">Match XI</button></div>
+          </div>
+        </div>
+      </section>
+      <section class="section grid g-4" id="squadKpis"></section>
+      <section class="section grid g-4" id="squadGrid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></section>
+
+      <div class="overlay" id="overlay"></div>
+      <aside class="drawer" id="drawer" aria-label="Player detail">
+        <button class="btn icon ghost drawer-close" id="drawerClose" aria-label="Close">&times;</button>
+        <div id="drawerBody"></div>
+      </aside>
+    </div>
+  </main>
+</div>
+<div class="toasts" id="toasts"></div>
+<script src="../assets/vendor/chart.umd.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/charts.js"></script>
+<script src="../components/sidebar.js"></script>
+<script src="../components/navbar.js"></script>
+<script src="../components/player-card.js"></script>
+<script src="../components/phase-card.js"></script>
+<script src="../components/checkpoint-card.js"></script>
+<script src="../js/squad.js"></script>
+</body>
+</html>

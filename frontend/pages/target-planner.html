@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Target Planner | EeSaala Tracker</title>
+<meta name="description" content="EeSaala Tracker: RCB squad-specific phase-wise target intelligence, IPL 2026.">
+<link rel="icon" href="../assets/logos/eesaala-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-page="target-planner">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <header class="topbar" id="topbar"></header>
+    <div class="content">
+      <div class="api-error" id="apiError"></div>
+
+      <section class="grid g-side-main">
+        <div class="stack">
+          <div class="card accent">
+            <div class="card-head"><h3>Plan settings</h3></div>
+            <div class="stack" style="gap:14px">
+              <div class="field"><label>Innings mode</label>
+                <div class="seg" id="modeSeg"><button class="on" data-mode="AUTO">Fixture</button><button data-mode="BAT_FIRST">Bat first</button><button data-mode="CHASE">Chase</button></div>
+              </div>
+              <div class="field" id="chaseField"><label for="chaseTarget">Chase target (runs required)</label>
+                <input class="input" id="chaseTarget" type="number" min="60" max="350" placeholder="Fixture default">
+              </div>
+              <div class="field"><label for="wpen">Wicket penalty w: <span id="wpenVal" class="gold"></span></label>
+                <input id="wpen" type="range" min="0" max="15" step="0.5">
+              </div>
+              <div class="field"><label>Playing XI</label>
+                <div class="seg" id="xiModeSeg"><button class="on" data-x="fixture">Fixture XI</button><button data-x="custom">Custom XI</button></div>
+              </div>
+              <button class="btn primary" id="planBtn">Generate checkpoint plan</button>
+              <p class="small" style="margin:0">The plan is saved to <code>rcb_target_predictions</code> and becomes the reference for the Match Tracker.</p>
+            </div>
+          </div>
+          <div class="card accent hidden" id="xiCard">
+            <div class="card-head"><h3>Custom XI</h3><span class="badge" id="xiCount">0 / 11</span></div>
+            <p class="small">Tick 11 players. Order sets the batting order (max 4 overseas).</p>
+            <div class="xi-list" id="xiList"></div>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="grid g-4" id="targetKpis"></div>
+          <div class="grid g-3" id="checkpoints"></div>
+          <div class="grid g-2">
+            <div class="card accent">
+              <div class="card-head"><h3>Target vs plan vs capacity</h3><span class="small">Runs by phase</span></div>
+              <div class="chart-box"><canvas id="planChart"></canvas></div>
+            </div>
+            <div class="card accent">
+              <div class="card-head"><h3>Planned worm</h3><span class="small">Cumulative runs</span></div>
+              <div class="chart-box"><canvas id="wormChart"></canvas></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>How the plan is built</h3></div>
+            <div class="grid g-2">
+              <div class="formula">T_base = &lambda; &middot; VenuePar + (1 &minus; &lambda;) &middot; Capacity</div>
+              <div class="formula">T_recommended = T_base &times; (2 &minus; BSI)</div>
+              <div class="formula">R_p = T &times; s_p (venue phase share)</div>
+              <div class="formula">Cost = |CumRuns &minus; CumTarget| + w &middot; E[Wickets]</div>
+            </div>
+            <p class="small" style="margin-top:12px">The dynamic programme picks an intent multiplier per phase (0.80x to 1.25x of adjusted capacity).
+              Higher intent adds runs but raises expected wickets (elasticity 2.2), and wickets above the baseline reduce the scoring resource of later phases.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+<div class="toasts" id="toasts"></div>
+<script src="../assets/vendor/chart.umd.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/charts.js"></script>
+<script src="../components/sidebar.js"></script>
+<script src="../components/navbar.js"></script>
+<script src="../components/player-card.js"></script>
+<script src="../components/phase-card.js"></script>
+<script src="../components/checkpoint-card.js"></script>
+<script src="../js/target-planner.js"></script>
+</body>
+</html>
